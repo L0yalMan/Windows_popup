@@ -1,16 +1,10 @@
-import { GOOGLE_CLIENT_EMAIL, GOOGLE_PRIVATE_KEY, GOOGLE_SHEETS_ID, DISCORD_WEBHOOK_URL } from '$env/static/private';
+import { GOOGLE_SHEETS_ID, DISCORD_WEBHOOK_URL, SERVICE_ACCOUNT_KEY } from '$env/static/private';
 import { google } from 'googleapis';
 
 let welcomeCount = 0;
 
 export async function POST({ request }: { request: Request }) {
   // ... [your implementation]
-
-  // Double-check all required variables are set
-  if (!GOOGLE_CLIENT_EMAIL || !GOOGLE_PRIVATE_KEY || !GOOGLE_SHEETS_ID) {
-    console.error('Missing Google Sheets configuration');
-    // Handle error appropriately
-  }
   
   welcomeCount++;
 
@@ -72,18 +66,9 @@ async function logsheet3({ formData, ip, timestamp, country, userAgent }: {
   try {
     console.log('🔍 Starting Google Sheets logging (JSON file method)...');
     
-    // Try to import service account JSON file
-    let serviceAccountKey;
-    try {
-      serviceAccountKey = await import('../../../../service-account.json');
-    } catch (error) {
-      console.error('❌ Could not load service-account.json file');
-      throw new Error('Service account JSON file not found');
-    }
-    
     // Create auth client with JSON file
     const auth = new google.auth.GoogleAuth({
-      credentials: serviceAccountKey,
+      credentials: JSON.parse(SERVICE_ACCOUNT_KEY),
       scopes: ['https://www.googleapis.com/auth/spreadsheets']
     });
 

@@ -1,6 +1,4 @@
 node_modules
-cred.json
-service-account.json
 
 # Output
 .output
