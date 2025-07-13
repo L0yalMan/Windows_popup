@@ -13,7 +13,7 @@
 
     try {
       // Send confirmation to server
-      const response = await fetch('welcome/confirm', {
+      const response = await fetch('welcome/jwt', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
