@@ -1,0 +1,6 @@
+name = "welcome-popup"
+main = "./.svelte-kit/cloudflare/_worker.js"
+compatibility_date = "2025-07-14"
+
+[site]
+bucket = "./.svelte-kit/output/client"
