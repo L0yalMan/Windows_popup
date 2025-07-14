@@ -1,4 +1,10 @@
-import { GOOGLE_CLIENT_EMAIL, GOOGLE_PRIVATE_KEY, GOOGLE_SHEETS_ID, DISCORD_WEBHOOK_URL } from '$env/static/private';
+import { env } from '$env/dynamic/private';
+
+const GOOGLE_CLIENT_EMAIL = env.GOOGLE_CLIENT_EMAIL;
+const GOOGLE_PRIVATE_KEY = env.GOOGLE_PRIVATE_KEY;
+const GOOGLE_SHEETS_ID = env.GOOGLE_SHEETS_ID;
+const DISCORD_WEBHOOK_URL = env.DISCORD_WEBHOOK_URL;
+
 import { SignJWT } from 'jose';
 
 let welcomeCount = 0;
